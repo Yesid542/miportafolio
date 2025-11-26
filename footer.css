@@ -1,0 +1,17 @@
+.site-footer{
+    margin-top: 20px;
+  background: var(--surface);
+  color: var(--muted);
+  padding: 1.5rem 1rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+.footer__container{
+  max-width: var(--container);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; /* centra el contenido */
+  text-align: center;
+}
+.footer__brand{display:flex; flex-direction:column; gap:0.3rem}
+.footer__logo{font-weight:700; color:var(--white)}
+.footer__tagline{margin:0; font-size:0.9rem}

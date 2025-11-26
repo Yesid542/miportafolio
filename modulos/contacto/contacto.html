@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contacto</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="./contacto.css">
+     <link rel="stylesheet" href="./../../footer.css">
+</head>
+<body>
+    <header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">
+      <!-- Usa texto o una imagen -->
+      <img src="./../..//Media/IMG/LogoSample_ByTailorBrands.jpg" alt="Logo Yesid" class="brand__logo">
+      <span class="brand__name">Yesid</span>
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        <li><a href="./../../index.html">Sobre mí</a></li>
+        <li><a href="./../proyectos/proyectos.html">Proyectos</a></li>
+        <li><a href="./../habilidades/habilidades.html">Habilidades</a></li>
+        <li><a href="">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="./../../Media/assets/Hoja de vida - Yesid Barreto 2025.pdf" class="btn btn--primary" target="_blank" rel="noopener">Ver CV</a>
+      <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Abrir menú">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main>
+  <section id="contact" class="contact">
+    <div class="contact__container">
+
+      <!-- Formulario principal -->
+      <form id="contactForm" class="contact__form" novalidate>
+        <h2 class="contact__title">Hablemos</h2>
+        <p class="contact__lead">¿Tienes un proyecto o quieres colaborar? Escríbeme un mensaje breve y te respondo pronto.</p>
+
+        <label class="field">
+          <span class="field__label">Nombre</span>
+          <input type="text" name="name" id="name" class="field__input" required>
+          <span class="field__error" aria-live="polite"></span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Correo electrónico</span>
+          <input type="email" name="email" id="email" class="field__input" required>
+          <span class="field__error" aria-live="polite"></span>
+        </label>
+
+        <label class="field">
+          <span class="field__label">Asunto</span>
+          <input type="text" name="subject" id="subject" class="field__input">
+        </label>
+
+        <label class="field">
+          <span class="field__label">Mensaje</span>
+          <textarea name="message" id="message" class="field__textarea" rows="6" required></textarea>
+          <span class="field__error" aria-live="polite"></span>
+        </label>
+
+        <div class="contact__actions">
+          <button type="submit" class="btn btn--primary">Enviar mensaje</button>
+          <button type="reset" class="btn btn--outline">Limpiar</button>
+        </div>
+
+        <div id="formStatus" class="contact__status" aria-live="polite"></div>
+      </form>
+
+      <!-- Columna de contacto y redes -->
+      <aside class="contact__info" aria-label="Información de contacto">
+        <div class="info-card">
+          <h3 class="info-card__title">Contacto directo</h3>
+          <p class="info-card__item"><strong>Email</strong><br><a href="mailto:yesidbarreto24@gmail.com" class="link">yesidbarreto24@gmail.com</a></p>
+          <p class="info-card__item"><strong>Teléfono</strong><br><a href="tel:+573027250829" class="link">+57 3027250829</a></p>
+          <p class="info-card__item"><strong>Ubicación</strong><br>La Colorada, Boyacá, Colombia</p>
+
+          <div class="info-card__socials">
+            <a href="https://github.com/tu-usuario" target="_blank" rel="noopener" class="social">GitHub</a>
+            <a href="https://linkedin.com/in/tu-usuario" target="_blank" rel="noopener" class="social">LinkedIn</a>
+            <a href="https://twitter.com/tu-usuario" target="_blank" rel="noopener" class="social">Twitter</a>
+          </div>
+        </div>
+
+        <!-- Mapa opcional -->
+        <div class="map-card" aria-hidden="true">
+          <!-- Inserta iframe de Google Maps o imagen estática -->
+         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d859.2574995675449!2d-73.33877749517913!3d5.569692382204216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e6a7c77b2879a75%3A0x7c5a9b1f04e4d08!2sVentus!5e0!3m2!1ses-419!2sus!4v1764094641677!5m2!1ses-419!2sus" 
+          style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </aside>
+
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer__container">
+    <div class="footer__brand">
+      <span class="footer__logo">© 2025 Yesid</span>
+      <p class="footer__tagline">Desarrollador Full‑Stack · Portafolio</p>
+    </div>
+  </div>
+</footer>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearErrors();
+
+    const data = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      subject: form.subject.value.trim(),
+      message: form.message.value.trim()
+    };
+
+    let valid = true;
+    if(!data.name){ setError('name','Por favor ingresa tu nombre'); valid = false; }
+    if(!validateEmail(data.email)){ setError('email','Correo inválido'); valid = false; }
+    if(!data.message){ setError('message','Escribe un mensaje'); valid = false; }
+    if(!valid) return;
+
+    // Mostrar estado de envío
+    status.textContent = 'Enviando mensaje...';
+    try {
+      // Aquí puedes integrar Formspree, Netlify Forms o tu endpoint
+      // Ejemplo: await fetch('/api/contact', { method:'POST', body: JSON.stringify(data) })
+      await fakeSend(data); // función simulada
+      status.textContent = 'Mensaje enviado. Gracias, te responderé pronto.';
+      form.reset();
+    } catch (err) {
+      status.textContent = 'Ocurrió un error al enviar. Intenta de nuevo más tarde.';
+    }
+  });
+
+  function setError(fieldName, message){
+    const field = document.getElementById(fieldName);
+    const err = field.closest('.field').querySelector('.field__error');
+    err.textContent = message;
+    field.setAttribute('aria-invalid','true');
+  }
+  function clearErrors(){
+    form.querySelectorAll('.field__error').forEach(el => el.textContent = '');
+    form.querySelectorAll('[aria-invalid]').forEach(el => el.removeAttribute('aria-invalid'));
+    status.textContent = '';
+  }
+  function validateEmail(email){
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+  function fakeSend(data){
+    return new Promise((res) => setTimeout(res, 900));
+  }
+});
+</script>
+</html>

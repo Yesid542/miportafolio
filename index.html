@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Mi</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="stylesheet" href="./footer.css">
+</head>
+<body>
+    <header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">
+      <!-- Usa texto o una imagen -->
+      <img src="./Media/IMG/LogoSample_ByTailorBrands.jpg" alt="Logo Yesid" class="brand__logo">
+      <span class="brand__name">Yesid</span>
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        <li><a href="#about">Sobre mí</a></li>
+        <li><a href="./modulos/proyectos/proyectos.html">Proyectos</a></li>
+        <li><a href="./modulos/habilidades/habilidades.html">Habilidades</a></li>
+        <li><a href="./modulos/contacto/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="./Media/assets/Hoja de vida - Yesid Barreto 2025.pdf" class="btn btn--primary" target="_blank" rel="noopener">Ver CV</a>
+      <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Abrir menú">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="hero" id="hero" aria-labelledby="hero-title">
+    <div class="hero__container">
+      <div class="hero__left">
+        <p class="kicker">Hola, soy</p>
+        <h1 id="hero-title" class="hero__title">Yesid <span class="accent">Desarrollador Full‑Stack</span></h1>
+        <p class="hero__lead">
+          Diseño y construyo aplicaciones web robustas y mantenibles. Me especializo en React, Python y soluciones end‑to‑end que facilitan la colaboración y el mantenimiento.
+        </p>
+        <div class="hero__actions">
+          <a href="./modulos/proyectos/proyectos.html" class="btn btn--primary">Ver proyectos</a>
+          <a href="./Media/assets/Hoja de vida - Yesid Barreto 2025.pdf" class="btn btn--outline" target="_blank" rel="noopener">Descargar CV</a>
+        </div>
+        <ul class="hero__skills" aria-hidden="true">
+          <li><strong>React</strong> • APIs • Automatización</li>
+          <li><strong>Python</strong> • Flask/Django • Scripts</li>
+          <li><strong>DevOps</strong> • CI/CD • Empaquetado</li>
+          <li><strong>Soporte</strong> • OS/HW/SW • Networking</li>
+        </ul>
+      </div>
+
+      <aside class="hero__right" aria-hidden="false">
+        <div class="card-profile">
+          <img src="./Media/IMG/IMG_20250507_164316248.jpg" alt="Foto de Yesid" class="card-profile__img">
+          <div class="card-profile__body">
+            <h3 class="card-profile__name">Yesid</h3>
+            <p class="card-profile__role">Full‑Stack Developer</p>
+            <p class="card-profile__meta">Disponible para contratación · Enfoque en educación y buenas prácticas</p>
+            <div class="card-profile__links">
+              <a href="https://github.com/Yesid542" target="_blank" rel="noopener" class="link">GitHub</a>
+              <a href="https://www.linkedin.com/in/wilman-yesid-barreto-avila-9a1b71246/" target="_blank" rel="noopener" class="link">LinkedIn</a>
+              <a href="https://www.instagram.com/yesid_barretto/" target="_blank" rel="noopener" class="link">Instagram</a>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="footer__container">
+    <div class="footer__brand">
+      <span class="footer__logo">© 2025 Yesid</span>
+      <p class="footer__tagline">Desarrollador Full‑Stack · Portafolio</p>
+    </div>
+  </div>
+</footer>
+</body>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    // Animación simple para icono hamburguesa
+    const ham = toggle.querySelector('.hamburger');
+    if(open){
+      ham.style.transform = 'rotate(45deg)';
+      ham.style.background = 'transparent';
+      ham.style.boxShadow = 'none';
+      ham.querySelector && (ham.querySelector('span')?.style.display = 'none');
+    } else {
+      ham.style.transform = '';
+      ham.style.background = '';
+    }
+  });
+
+  // Cerrar menú al pulsar Escape
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && nav.classList.contains('open')){
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Cerrar menú al hacer clic en un enlace (útil en móviles)
+  document.querySelectorAll('.nav__list a').forEach(a => {
+    a.addEventListener('click', () => {
+      if(nav.classList.contains('open')){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+});
+// Scroll suave desde "Ver proyectos" y manejo de foco
+document.addEventListener('click', function(e){
+  const target = e.target.closest('a[href^="#"]');
+  if(!target) return;
+  const id = target.getAttribute('href');
+  const dest = document.querySelector(id);
+  if(dest){
+    e.preventDefault();
+    dest.scrollIntoView({behavior:'smooth', block:'start'});
+    // mover foco para lectores de pantalla
+    dest.setAttribute('tabindex','-1');
+    dest.focus({preventScroll:true});
+    window.setTimeout(()=> dest.removeAttribute('tabindex'), 1000);
+  }
+});
+</script>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="./habilidades.css">
+     <link rel="stylesheet" href="./../../footer.css">
+
+</head>
+<body>
+    <header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">
+      <!-- Usa texto o una imagen -->
+      <img src="./../..//Media/IMG/LogoSample_ByTailorBrands.jpg" alt="Logo Yesid" class="brand__logo">
+      <span class="brand__name">Yesid</span>
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        <li><a href="./../../index.html">Sobre mí</a></li>
+        <li><a href="./../proyectos/proyectos.html">Proyectos</a></li>
+        <li><a href="">Habilidades</a></li>
+        <li><a href="./../contacto/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="./../../Media/assets/Hoja de vida - Yesid Barreto 2025.pdf" class="btn btn--primary" target="_blank" rel="noopener">Ver CV</a>
+      <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Abrir menú">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main>
+  <section id="skills" class="skills" aria-labelledby="skills-title">
+  <div class="skills__container">
+
+    <header class="skills__header">
+      <h2 id="skills-title" class="skills__title">Habilidades</h2>
+      <p class="skills__lead">Tecnologías y competencias que uso habitualmente. Filtra por categoría para ver lo más relevante.</p>
+
+      <div class="skills__filters" role="toolbar" aria-label="Filtrar habilidades">
+        <button class="chip active" data-filter="all" aria-pressed="true">Todas</button>
+        <button class="chip" data-filter="frontend">Frontend</button>
+        <button class="chip" data-filter="backend">Backend</button>
+        <button class="chip" data-filter="devops">DevOps</button>
+        <button class="chip" data-filter="tools">Herramientas</button>
+      </div>
+    </header>
+
+    <div class="skills__grid" aria-live="polite">
+      <!-- Ejemplo de tarjeta de habilidad -->
+      <article class="skill-card" data-category="frontend">
+        <div class="skill-card__head">
+          <h3 class="skill-card__name">React</h3>
+          <span class="skill-card__level">Avanzado</span>
+        </div>
+        <p class="skill-card__desc">Componentes, hooks, estado global y optimización.</p>
+        <div class="skill-card__meter" aria-hidden="true">
+          <div class="skill-card__bar" style="--value:90%"></div>
+        </div>
+      </article>
+
+      <article class="skill-card" data-category="backend">
+        <div class="skill-card__head">
+          <h3 class="skill-card__name">Python</h3>
+          <span class="skill-card__level">Avanzado</span>
+        </div>
+        <p class="skill-card__desc">APIs con Flask/Django, scripting y automatización.</p>
+        <div class="skill-card__meter" aria-hidden="true">
+          <div class="skill-card__bar" style="--value:85%"></div>
+        </div>
+      </article>
+
+      <article class="skill-card" data-category="devops">
+        <div class="skill-card__head">
+          <h3 class="skill-card__name">CI/CD</h3>
+          <span class="skill-card__level">Intermedio</span>
+        </div>
+        <p class="skill-card__desc">Pipelines, Docker, GitHub Actions y despliegues.</p>
+        <div class="skill-card__meter" aria-hidden="true">
+          <div class="skill-card__bar" style="--value:70%"></div>
+        </div>
+      </article>
+
+      <article class="skill-card" data-category="tools">
+        <div class="skill-card__head">
+          <h3 class="skill-card__name">VS Code</h3>
+          <span class="skill-card__level">Avanzado</span>
+        </div>
+        <p class="skill-card__desc">Extensiones, atajos, terminal y estructura de ficheros.</p>
+        <div class="skill-card__meter" aria-hidden="true">
+          <div class="skill-card__bar" style="--value:70%"></div>
+        </div>
+      </article>
+
+      <article class="skill-card" data-category="backend">
+        <div class="skill-card__head">
+          <h3 class="skill-card__name">PHP</h3>
+          <span class="skill-card__level">Intermedio</span>
+        </div>
+        <p class="skill-card__desc">POO, manejo de sesiones y formularios, CRUD con base de datos.</p>
+        <div class="skill-card__meter" aria-hidden="true">
+          <div class="skill-card__bar" style="--value:55%"></div>
+        </div>
+      </article>
+
+      <article class="skill-card" data-category="backend">
+        <div class="skill-card__head">
+          <h3 class="skill-card__name">SQL</h3>
+          <span class="skill-card__level">Intermedio</span>
+        </div>
+        <p class="skill-card__desc">Consultas, subconsultas, vistas y triggers.</p>
+        <div class="skill-card__meter" aria-hidden="true">
+          <div class="skill-card__bar" style="--value:75%"></div>
+        </div>
+      </article>
+
+      <article class="skill-card" data-category="frontend">
+        <div class="skill-card__head">
+          <h3 class="skill-card__name">Javascript</h3>
+          <span class="skill-card__level">Intermedio</span>
+        </div>
+        <p class="skill-card__desc">Sintaxis, programación asincronica y gestion de api´s</p>
+        <div class="skill-card__meter" aria-hidden="true">
+          <div class="skill-card__bar" style="--value:65%"></div>
+        </div>
+      </article>
+
+      <!-- Añade más skill-card según necesites -->
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="footer__container">
+    <div class="footer__brand">
+      <span class="footer__logo">© 2025 Yesid</span>
+      <p class="footer__tagline">Desarrollador Full‑Stack · Portafolio</p>
+    </div>
+  </div>
+</footer>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+  const chips = document.querySelectorAll('.skills__filters .chip');
+  const cards = document.querySelectorAll('.skill-card');
+
+  // Filtrar tarjetas por categoría
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      // actualizar estado visual de chips
+      chips.forEach(c => { c.classList.remove('active'); c.setAttribute('aria-pressed','false'); });
+      chip.classList.add('active');
+      chip.setAttribute('aria-pressed','true');
+
+      const filter = chip.dataset.filter;
+      cards.forEach(card => {
+        const cat = card.dataset.category || 'all';
+        if(filter === 'all' || cat === filter){
+          card.classList.remove('hidden');
+          // animar barra cuando la tarjeta aparece
+          animateBar(card);
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Animar todas las barras visibles al cargar la sección
+  function animateVisibleBars(){
+    document.querySelectorAll('.skill-card:not(.hidden)').forEach(animateBar);
+  }
+
+  function animateBar(card){
+    const bar = card.querySelector('.skill-card__bar');
+    if(!bar) return;
+    const value = bar.style.getPropertyValue('--value') || '0%';
+    // evitar reiniciar si ya está animada
+    if(bar.dataset.animated === 'true') return;
+    // pequeña espera para suavizar la animación en cascada
+    setTimeout(() => {
+      bar.style.width = value;
+      bar.dataset.animated = 'true';
+    }, 80);
+  }
+
+  // Observador para animar cuando la sección entra en vista
+  const skillsSection = document.getElementById('skills');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        animateVisibleBars();
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.2 });
+  if(skillsSection) io.observe(skillsSection);
+});
+</script>
+</html>

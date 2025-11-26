@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyectos</title>
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="./proyectos.css">
+    <link rel="stylesheet" href="./../../footer.css">
+</head>
+<body>
+    <header class="site-header">
+  <div class="container">
+    <a href="/" class="brand">
+      <!-- Usa texto o una imagen -->
+      <img src="./../..//Media/IMG/LogoSample_ByTailorBrands.jpg" alt="Logo Yesid" class="brand__logo">
+      <span class="brand__name">Yesid</span>
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+      <ul class="nav__list">
+        <li><a href="../../index.html ">Sobre mí</a></li>
+        <li><a href="">Proyectos</a></li>
+        <li><a href="./../habilidades/habilidades.html">Habilidades</a></li>
+        <li><a href="./../contacto/contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <div class="header-actions">
+      <a href="./../../Media/assets/Hoja de vida - Yesid Barreto 2025.pdf" class="btn btn--primary" target="_blank" rel="noopener">Ver CV</a>
+      <button class="nav-toggle" aria-controls="site-navigation" aria-expanded="false" aria-label="Abrir menú">
+        <span class="hamburger"></span>
+      </button>
+    </div>
+  </div>
+</header>
+<main>
+  <section id="projects" class="projects">
+  <div class="projects__grid">
+    <article class="project-card" data-youtube="VIDEO_ID">
+      <button class="project-card__thumb" aria-label="Abrir video del proyecto X">
+        <img src="./../../Media/IMG/Captura de pantalla 2025-11-25 214154.png"
+             alt="Miniatura proyecto X"
+             loading="lazy">
+        <span class="play">▶</span>
+      </button>
+
+      <div class="project-card__body">
+        <h3 class="project-card__title">WiigoSport-First Web Site</h3>
+        <p class="project-card__desc">Primer sitio web desarrollado con PHP para la empresa WiigoSport - Proyecto de graduación</p>
+        <a class="project-card__link" href="https://youtu.be/Hae-SaTxOjg" target="_blank" rel="noopener">Ver en YouTube</a>
+      </div>
+    </article>
+    <!-- repetir article por cada proyecto -->
+  </div>
+
+  <div id="videoModal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop"></div>
+    <div class="modal__content" role="dialog" aria-modal="true">
+      <div id="modalPlayer"></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="footer__container">
+    <div class="footer__brand">
+      <span class="footer__logo">© 2025 Yesid</span>
+      <p class="footer__tagline">Desarrollador Full‑Stack · Portafolio</p>
+    </div>
+  </div>
+</footer>
+</body>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav');
+  toggle.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+    // Animación simple para icono hamburguesa
+    const ham = toggle.querySelector('.hamburger');
+    if(open){
+      ham.style.transform = 'rotate(45deg)';
+      ham.style.background = 'transparent';
+      ham.style.boxShadow = 'none';
+      ham.querySelector && (ham.querySelector('span')?.style.display = 'none');
+    } else {
+      ham.style.transform = '';
+      ham.style.background = '';
+    }
+  });
+
+  // Cerrar menú al pulsar Escape
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && nav.classList.contains('open')){
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Cerrar menú al hacer clic en un enlace (útil en móviles)
+  document.querySelectorAll('.nav__list a').forEach(a => {
+    a.addEventListener('click', () => {
+      if(nav.classList.contains('open')){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+});
+// Scroll suave desde "Ver proyectos" y manejo de foco
+document.addEventListener('click', function(e){
+  const target = e.target.closest('a[href^="#"]');
+  if(!target) return;
+  const id = target.getAttribute('href');
+  const dest = document.querySelector(id);
+  if(dest){
+    e.preventDefault();
+    dest.scrollIntoView({behavior:'smooth', block:'start'});
+    // mover foco para lectores de pantalla
+    dest.setAttribute('tabindex','-1');
+    dest.focus({preventScroll:true});
+    window.setTimeout(()=> dest.removeAttribute('tabindex'), 1000);
+  }
+});
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.project-card__thumb');
+  if(btn){
+    const id = btn.closest('.project-card').dataset.youtube;
+    openModalWithVideo(id);
+  }
+  if(e.target.matches('.modal__close, .modal__backdrop')) closeModal();
+});
+
+function openModalWithVideo(id){
+  const modal = document.getElementById('videoModal');
+  const player = document.getElementById('modalPlayer');
+  player.innerHTML = `<iframe src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen title="Video del proyecto"></iframe>`;
+  modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){
+  const modal = document.getElementById('videoModal');
+  document.getElementById('modalPlayer').innerHTML = '';
+  modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+</script>
+</html>
