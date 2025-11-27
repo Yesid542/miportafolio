@@ -18,7 +18,7 @@
       <span class="brand__name">Yesid</span>
     </a>
 
-    <nav class="nav" aria-label="Navegación principal">
+    <nav class="nav" id="site-navigation"  aria-label="Navegación principal">
       <ul class="nav__list">
         <li><a href="./../../index.html">Sobre mí</a></li>
         <li><a href="./../proyectos/proyectos.html">Proyectos</a></li>
@@ -146,6 +146,39 @@
 </footer>
 </body>
 <script>
+  
+   document.addEventListener('DOMContentLoaded', function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('#site-navigation');
+
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+
+
+  // Cerrar menú al pulsar Escape
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape' && nav.classList.contains('open')){
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Cerrar menú al hacer clic en un enlace (útil en móviles)
+  document.querySelectorAll('.nav__list a').forEach(a => {
+    a.addEventListener('click', () => {
+      if(nav.classList.contains('open')){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+});
+
   document.addEventListener('DOMContentLoaded', () => {
   const chips = document.querySelectorAll('.skills__filters .chip');
   const cards = document.querySelectorAll('.skill-card');

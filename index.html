@@ -16,7 +16,7 @@
       <span class="brand__name">Yesid</span>
     </a>
 
-    <nav class="nav" aria-label="Navegación principal">
+    <nav class="nav" id="site-navigation" aria-label="Navegación principal">
       <ul class="nav__list">
         <li><a href="#about">Sobre mí</a></li>
         <li><a href="./modulos/proyectos/proyectos.html">Proyectos</a></li>
@@ -84,23 +84,17 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function(){
-  const toggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('.nav');
-  toggle.addEventListener('click', () => {
-    const open = nav.classList.toggle('open');
-    toggle.setAttribute('aria-expanded', String(open));
-    // Animación simple para icono hamburguesa
-    const ham = toggle.querySelector('.hamburger');
-    if(open){
-      ham.style.transform = 'rotate(45deg)';
-      ham.style.background = 'transparent';
-      ham.style.boxShadow = 'none';
-      ham.querySelector && (ham.querySelector('span')?.style.display = 'none');
-    } else {
-      ham.style.transform = '';
-      ham.style.background = '';
-    }
-  });
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('#site-navigation');
+
+      if (!toggle || !nav) return;
+
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+
 
   // Cerrar menú al pulsar Escape
   document.addEventListener('keydown', (e) => {
@@ -120,20 +114,7 @@
     });
   });
 });
-// Scroll suave desde "Ver proyectos" y manejo de foco
-document.addEventListener('click', function(e){
-  const target = e.target.closest('a[href^="#"]');
-  if(!target) return;
-  const id = target.getAttribute('href');
-  const dest = document.querySelector(id);
-  if(dest){
-    e.preventDefault();
-    dest.scrollIntoView({behavior:'smooth', block:'start'});
-    // mover foco para lectores de pantalla
-    dest.setAttribute('tabindex','-1');
-    dest.focus({preventScroll:true});
-    window.setTimeout(()=> dest.removeAttribute('tabindex'), 1000);
-  }
-});
+
+
 </script>
 </html>
